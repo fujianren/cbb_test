@@ -7,4 +7,8 @@
     android:layout_height="match_parent"
     tools:context="com.cbb.myapplication.HeartLayoutActivity">
 
+    <com.cbb.heartlibrary.HeartLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/heart_layout"/>
 </android.support.constraint.ConstraintLayout>

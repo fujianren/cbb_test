@@ -18,6 +18,10 @@
         </activity>
         <activity android:name=".ElasticActivity">
         </activity>
+        <activity android:name=".HeartLayoutActivity">
+        </activity>
+        <activity android:name=".SignNameActivity">
+        </activity>
     </application>
 
 </manifest>

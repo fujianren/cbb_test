@@ -35,10 +35,21 @@ public abstract class AbstractPathAnimator {
         mRandom = new Random();
     }
 
+    /**
+     * 返回一个随机的旋转值
+     * @return
+     */
     public float randomRotation() {
         return mRandom.nextFloat() * 28.6F - 14.3F;
     }
 
+    /**
+     * 创建一条随机的塞贝尔曲线
+     * @param counter
+     * @param view
+     * @param factor
+     * @return
+     */
     public Path createPath(AtomicInteger counter, View view, int factor) {
         Random r = mRandom;
         int x = r.nextInt(mConfig.xRand);
@@ -52,14 +63,22 @@ public abstract class AbstractPathAnimator {
         y2 = y - y2 / 2;
         Path p = new Path();
         p.moveTo(mConfig.initX, y);
-        p.cubicTo(mConfig.initX, y - factor, x, y2 + factor, x, y2);
+        p.cubicTo(mConfig.initX, y - factor, x, y2 + factor, x, y2);       // 双控制点的赛贝尔曲线
         p.moveTo(x, y2);
         p.cubicTo(x, y2 - factor, x2, y3 + factor, x2, y3);
         return p;
     }
 
+    /**
+     * 子类需要重写的开始方法
+     * @param child     做动画的子控件
+     * @param parent    做动画的控件所在的父控件
+     */
     public abstract void start(View child, ViewGroup parent);
 
+    /**
+     * 用Config类存储HeartLayout的属性集
+     */
     public static class Config {
         public int initX;
         public int initY;

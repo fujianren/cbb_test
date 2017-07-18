@@ -18,5 +18,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void heartLayout(View view) {
+        Intent intent = new Intent(this, HeartLayoutActivity.class);
+        startActivity(intent);
+    }
+
+    public void signature(View view) {
+        Intent intent = new Intent(this, SignNameActivity.class);
+        startActivity(intent);
+    }
+
 
 }

@@ -9,4 +9,15 @@
         android:text="elastic进度条"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Button
+        android:onClick="heartLayout"
+        android:text="冒泡泡"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:onClick="signature"
+        android:text="电子签名"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

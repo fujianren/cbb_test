@@ -1,1 +1,1 @@
-include ':app', ':elasticdownload'
+include ':app', ':elasticdownload', ':heartlibrary', ':sinaturelibrary'
