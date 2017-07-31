@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ta="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.jiahuan.timelyanimation.NumberSwitchView
+        android:id="@+id/numberswitchview_ten"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        ta:ta_number_animation_duration="600"
+        ta:ta_number_bg_color="#000000"
+        ta:ta_number_color="#FFFFFF"
+        ta:ta_number_stroke_width="2dp"/>
+
+    <com.jiahuan.timelyanimation.NumberSwitchView
+        android:id="@+id/numberswitchview_one"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        ta:ta_number_animation_duration="600"
+        ta:ta_number_bg_color="#FFFFFF"
+        ta:ta_number_color="#FFFFFF"
+        ta:ta_number_stroke_width="2dp"/>
+</LinearLayout>
