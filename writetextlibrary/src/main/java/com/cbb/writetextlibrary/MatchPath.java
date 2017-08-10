@@ -1,4 +1,4 @@
-package com.dk.view.patheffect;
+package com.cbb.writetextlibrary;
 
 import android.util.SparseArray;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class MatchPath {
 
-    private static final SparseArray<float[]> sPointList;
+    private static final SparseArray<float[]> sPointList;       // 点的集合
 
     public static final char V_LEFT = '#';
     public static final char H_TOP_BOTTOM = '$';
@@ -17,8 +17,8 @@ public class MatchPath {
 
 
     static {
-        sPointList = new SparseArray<float[]>();
-        float[][] LETTERS = new float[][]{
+        sPointList = new SparseArray<float[]>();       // 路径上点的集合
+        float[][] LETTERS = new float[][]{             // 每个字母对应的绘制点
                 new float[]{
                         // A
                         24, 0, 1, 22,
@@ -304,7 +304,7 @@ public class MatchPath {
         };
         // A - Z
         for (int i = 0; i < LETTERS.length; i++) {
-            sPointList.append(i + 65, LETTERS[i]);
+            sPointList.append(i + 65, LETTERS[i]);      // 对应ascII编码的字母位置，添加字母的点路径
         }
         // a - z
         for (int i = 0; i < LETTERS.length; i++) {
@@ -357,7 +357,7 @@ public class MatchPath {
 
     /**
      * @param str
-     * @param scale
+     * @param scale     缩放倍数
      * @param gapBetweenLetter
      * @return ArrayList of float[] {x1, y1, x2, y2}
      */
@@ -365,11 +365,13 @@ public class MatchPath {
         ArrayList<float[]> list = new ArrayList<float[]>();
         float offsetForWidth = 0;
         for (int i = 0; i < str.length(); i++) {
-            int pos = str.charAt(i);
+            int pos = str.charAt(i);                // 字符对应的编码位置
+            // 该pos是否是在key的集合中
             int key = sPointList.indexOfKey(pos);
             if (key == -1) {
                 continue;
             }
+            // 对应的路径点集
             float[] points = sPointList.get(pos);
 
             if (isButtonModle) {

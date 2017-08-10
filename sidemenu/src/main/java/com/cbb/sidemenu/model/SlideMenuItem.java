@@ -1,6 +1,8 @@
-package yalantis.com.sidemenu.model;
+package com.cbb.sidemenu.model;
 
-import yalantis.com.sidemenu.interfaces.Resourceble;
+import com.cbb.sidemenu.interfaces.Resourceble;
+
+;
 
 /**
  * Created by Konstantin on 23.12.2014.

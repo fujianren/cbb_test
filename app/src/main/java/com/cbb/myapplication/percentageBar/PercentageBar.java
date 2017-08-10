@@ -1,8 +1,5 @@
-package com.zhangqi.percentagebar;
+package com.cbb.myapplication.percentageBar;
 
-/**
- * Created by zhangqi on 15/10/30.
- */
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -87,8 +84,6 @@ public class PercentageBar extends View{
         mLinePaint.setStyle(Style.FILL);
         mLinePaint.setColor(0xffcdcdcd);
         mLinePaint.setStrokeWidth(2);
-
-
     }
 
     /**

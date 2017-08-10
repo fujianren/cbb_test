@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.cbb.myapplication">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +30,24 @@
         <activity android:name=".HeartLayoutActivity">
         </activity>
         <activity android:name=".SignNameActivity">
+        </activity>
+        <activity android:name=".LoadToastActivity">
+        </activity>
+        <activity android:name=".WriteTextActivity">
+        </activity>
+        <activity android:name=".PercentageBarActivity">
+        </activity>
+        <activity android:name=".QrCodeScan.CaptureActivity">
+        </activity>
+        <activity android:name=".share.ShareActivity">
+        </activity>
+        <activity
+            android:name=".SideMenuActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".TimelyAnimationActivity">
+        </activity>
+        <activity android:name=".DotProgressActivity">
         </activity>
     </application>
 

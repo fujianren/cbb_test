@@ -1,4 +1,4 @@
-package com.jiahuan.timelyanimation;
+package com.cbb.myapplication.timelyAnimation;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,6 +15,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.Transformation;
+
+import com.cbb.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

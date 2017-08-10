@@ -1,12 +1,13 @@
-package yalantis.com.sidemenu.interfaces;
+package com.cbb.sidemenu.interfaces;
 
 import android.graphics.Bitmap;
 
 /**
- * Created by Konstantin on 12.01.2015.
+ *
  */
 public interface ScreenShotable {
+    // 截屏的操作
     public void takeScreenShot();
-
+    // 获取截屏图对应的bitmap
     public Bitmap getBitmap();
 }

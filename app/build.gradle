@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
-
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -26,8 +30,13 @@ dependencies {
     })
     compile project(':elasticdownload')
     compile project(path: ':heartlibrary')
+    compile project(path: ':sinaturelibrary')
+    compile project(':loadtoastlibrary')
+    compile project(path: ':writetextlibrary')
+    compile project(path: ':sidemenu')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.github.ozodrukh:CircularReveal:1.0.4'
     testCompile 'junit:junit:4.12'
-    compile project(path: ':sinaturelibrary')
 }

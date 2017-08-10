@@ -190,4 +190,25 @@
         <attr name="vc_pathData" />
     </declare-styleable>
 
+    <!--数字动画-->
+    <declare-styleable name="NumberSwitchView">
+        <attr name="ta_number_stroke_width" format="dimension" />
+        <attr name="ta_number_bg_color" format="reference|color" />
+        <attr name="ta_number_color" format="reference|color" />
+        <attr name="ta_number_animation_duration" format="integer" />
+    </declare-styleable>
+
+
+    <!--点状加载-->
+    <declare-styleable name="DottedProgressBar">
+        <attr name="emptyDotsColor" format="color" />
+        <attr name="activeDotColor" format="color"/>
+        <attr name="inactiveDot" format="reference|color"/>
+        <attr name="activeDot" format="reference|color"/>
+        <attr name="dotSize" format="dimension"/>
+        <attr name="spacing" format="dimension"/>
+        <attr name="jumpingSpeed" format="integer"/>
+        <attr name="activeDotIndex" format="integer"/>
+    </declare-styleable>
+
 </resources>

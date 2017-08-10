@@ -1,4 +1,4 @@
-package com.zbar.lib.bitmap;
+package com.cbb.myapplication.QrCodeScan.bitmap;
 
 public abstract class LuminanceSource {
 

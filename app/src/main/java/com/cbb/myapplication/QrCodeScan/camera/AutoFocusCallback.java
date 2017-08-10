@@ -1,4 +1,4 @@
-package com.zbar.lib.camera;
+package com.cbb.myapplication.QrCodeScan.camera;
 
 import android.hardware.Camera;
 import android.os.Handler;

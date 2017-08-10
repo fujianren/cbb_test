@@ -1,4 +1,4 @@
-package yalantis.com.sidemenu.sample.fragment;
+package com.cbb.myapplication.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import yalantis.com.sidemenu.interfaces.ScreenShotable;
-import yalantis.com.sidemenu.sample.R;
+import com.cbb.myapplication.R;
+import com.cbb.sidemenu.interfaces.ScreenShotable;
+
 
 /**
- * Created by Konstantin on 22.12.2014.
+ * 实现了闪屏功能的Fragment
  */
 public class ContentFragment extends Fragment implements ScreenShotable {
     public static final String CLOSE = "Close";
@@ -31,6 +32,11 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     protected int res;
     private Bitmap bitmap;
 
+    /**
+     * 静态方法，创建一个新的ContentFragment对象并绑定指定的resId
+     * @param resId
+     * @return
+     */
     public static ContentFragment newInstance(int resId) {
         ContentFragment contentFragment = new ContentFragment();
         Bundle bundle = new Bundle();
@@ -62,22 +68,22 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView.setImageResource(res);
         return rootView;
     }
-
+    //************************************** 实现接口的方法 *************************************/
     @Override
     public void takeScreenShot() {
         Thread thread = new Thread() {
             @Override
             public void run() {
+                // 容器大小的bitmap
                 Bitmap bitmap = Bitmap.createBitmap(containerView.getWidth(),
                         containerView.getHeight(), Bitmap.Config.ARGB_8888);
-                Canvas canvas = new Canvas(bitmap);
-                containerView.draw(canvas);
+                Canvas canvas = new Canvas(bitmap);     // 以bitmap为底色的画布
+                containerView.draw(canvas);             // 绘制容器
                 ContentFragment.this.bitmap = bitmap;
             }
         };
 
         thread.start();
-
     }
 
     @Override

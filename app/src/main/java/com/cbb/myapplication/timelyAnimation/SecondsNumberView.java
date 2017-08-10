@@ -1,4 +1,4 @@
-package com.jiahuan.timelyanimation.sample;
+package com.cbb.myapplication.timelyAnimation;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.jiahuan.timelyanimation.NumberSwitchView;
+import com.cbb.myapplication.R;
 
 /**
- * Created by Administrator on 2015/9/24 0024.
+ * 秒数处的布局控件
  */
 public class SecondsNumberView extends LinearLayout {
 

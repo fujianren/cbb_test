@@ -1,11 +1,12 @@
-package com.zbar.lib.decode;
+package com.cbb.myapplication.QrCodeScan.decode;
 
 import android.os.Handler;
 import android.os.Message;
 
-import com.zbar.lib.CaptureActivity;
-import com.zbar.lib.R;
-import com.zbar.lib.camera.CameraManager;
+import com.cbb.myapplication.QrCodeScan.CaptureActivity;
+import com.cbb.myapplication.QrCodeScan.camera.CameraManager;
+import com.cbb.myapplication.R;
+
 
 /**
  * 作者: 陈涛(1076559197@qq.com)

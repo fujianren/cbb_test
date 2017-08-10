@@ -8,4 +8,7 @@
     <item name="restart_preview" type="id"/>
     <item name="quit" type="id"/>
 
+    <item type="id" name="tag_first"/>
+    <item type="id" name="tag_second"/>
+    <item type="id" name="tvScan"/>
 </resources>

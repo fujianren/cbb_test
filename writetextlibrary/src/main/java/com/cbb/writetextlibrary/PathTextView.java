@@ -1,4 +1,4 @@
-package com.dk.view.patheffect;
+package com.cbb.writetextlibrary;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -43,18 +43,18 @@ public class PathTextView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         setMeasuredDimension(measureWidth(widthMeasureSpec),
                 measureHeight(heightMeasureSpec));
-
     }
 
     public void init(String text) {
         if (text == null || text.length() == 0)
             return;
 
-        requestLayout();
-        invalidate();
+        requestLayout();    // 呼叫爸爸重新定位
+        invalidate();       // view本身重画
 
         mText = text;
         mDatas = MatchPath.getPath(mText);
+        // 对象动画，设置，开启
         mSvgAnimator = ObjectAnimator.ofFloat(this, "phase", 0.0f, 1.0f).setDuration(3000);
         mSvgAnimator.start();
     }
@@ -113,6 +113,11 @@ public class PathTextView extends View {
         invalidate();
     }
 
+    /**
+     * 根据测量的取值标准，重新读取测量值
+     * @param measureSpec  详细的测量值
+     * @return
+     */
     private int measureWidth(int measureSpec) {
         int result = 0;
         int specMode = MeasureSpec.getMode(measureSpec);
@@ -130,7 +135,6 @@ public class PathTextView extends View {
                 result = Math.min(result, specSize);
             }
         }
-
         return result;
     }
 

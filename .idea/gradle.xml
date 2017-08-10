@@ -12,7 +12,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/elasticdownload" />
             <option value="$PROJECT_DIR$/heartlibrary" />
+            <option value="$PROJECT_DIR$/loadtoastlibrary" />
+            <option value="$PROJECT_DIR$/sidemenu" />
             <option value="$PROJECT_DIR$/sinaturelibrary" />
+            <option value="$PROJECT_DIR$/writetextlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

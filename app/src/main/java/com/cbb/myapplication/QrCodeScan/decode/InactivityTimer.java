@@ -1,4 +1,4 @@
-package com.zbar.lib.decode;
+package com.cbb.myapplication.QrCodeScan.decode;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

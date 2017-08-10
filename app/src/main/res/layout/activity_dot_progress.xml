@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cbb.myapplication.DotProgressActivity">
+    <com.cbb.myapplication.progress.DottedProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="30dp"
+        app:activeDot="@drawable/active_dot"
+        app:dotSize="29dp"
+        app:inactiveDot="@drawable/inactive_dot"
+        app:jumpingSpeed="670"
+        app:spacing="15dp" />
+
+</android.support.constraint.ConstraintLayout>

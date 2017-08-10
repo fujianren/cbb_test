@@ -1,4 +1,4 @@
-package com.zbar.lib.decode;
+package com.cbb.myapplication.QrCodeScan.decode;
 
 import android.app.Activity;
 import android.content.DialogInterface;

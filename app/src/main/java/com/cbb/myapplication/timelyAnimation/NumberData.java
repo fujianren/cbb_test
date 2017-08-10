@@ -1,4 +1,4 @@
-package com.jiahuan.timelyanimation;
+package com.cbb.myapplication.timelyAnimation;
 
 /**
  * 数字0~9的点集合，按每个点的x坐标，y坐标依次排列

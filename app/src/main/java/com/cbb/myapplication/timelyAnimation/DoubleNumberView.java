@@ -1,4 +1,4 @@
-package com.jiahuan.timelyanimation.sample;
+package com.cbb.myapplication.timelyAnimation;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.jiahuan.timelyanimation.NumberSwitchView;
+import com.cbb.myapplication.R;
 
 /**
  * 自定义的容器，左右相邻的2个数字控件

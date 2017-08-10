@@ -4,7 +4,7 @@
     android:orientation="horizontal" android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.jiahuan.timelyanimation.NumberSwitchView
+    <com.cbb.myapplication.timelyAnimation.NumberSwitchView
         android:id="@+id/numberswitchview_ten"
         android:layout_width="35dp"
         android:layout_height="50dp"
@@ -13,7 +13,7 @@
         ta:ta_number_color="#FFFFFF"
         ta:ta_number_stroke_width="3dp"/>
 
-    <com.jiahuan.timelyanimation.NumberSwitchView
+    <com.cbb.myapplication.timelyAnimation.NumberSwitchView
         android:id="@+id/numberswitchview_one"
         android:layout_width="35dp"
         android:layout_height="50dp"

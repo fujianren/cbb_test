@@ -1,10 +1,10 @@
-package com.zbar.lib.camera;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+package com.cbb.myapplication.QrCodeScan.camera;
 
 import android.os.IBinder;
 import android.util.Log;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * 作者: 陈涛(1076559197@qq.com)

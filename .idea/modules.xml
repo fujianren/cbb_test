@@ -7,7 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/cbb_test.iml" filepath="$PROJECT_DIR$/cbb_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/elasticdownload/elasticdownload.iml" filepath="$PROJECT_DIR$/elasticdownload/elasticdownload.iml" />
       <module fileurl="file://$PROJECT_DIR$/heartlibrary/heartlibrary.iml" filepath="$PROJECT_DIR$/heartlibrary/heartlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loadtoastlibrary/loadtoastlibrary.iml" filepath="$PROJECT_DIR$/loadtoastlibrary/loadtoastlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sidemenu/sidemenu.iml" filepath="$PROJECT_DIR$/sidemenu/sidemenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/sinaturelibrary/sinaturelibrary.iml" filepath="$PROJECT_DIR$/sinaturelibrary/sinaturelibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/writetextlibrary/writetextlibrary.iml" filepath="$PROJECT_DIR$/writetextlibrary/writetextlibrary.iml" />
     </modules>
   </component>
 </project>
