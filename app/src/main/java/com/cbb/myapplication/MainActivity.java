@@ -68,4 +68,8 @@ public class MainActivity extends AppCompatActivity {
     public void dotProgress(View view) {
         start(DotProgressActivity.class);
     }
+
+    public void filterMenu(View view) {
+        start(FilterMenuActivity.class);
+    }
 }

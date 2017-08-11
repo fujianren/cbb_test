@@ -74,5 +74,11 @@
             android:layout_height="wrap_content"
             android:onClick="dotProgress"
             android:text="点状的进度加载"/>
+
+        <Button
+            android:onClick="filterMenu"
+            android:text="圆碟状菜单"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </ScrollView>
