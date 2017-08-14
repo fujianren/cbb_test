@@ -84,7 +84,7 @@ public class FilterMenuLayout extends ViewGroup {
     private Rect menuBounds;
     /**
      * set the circle position, base on its center , the menu will auto align.You should only set two directions at most.
-     * 属性：
+     * 属性：view在父容器中的间距，只能用2个方向确定唯一位置，如选取左、上方向确定时，再使用右、下方向是错误的
      */
     private int centerLeft, centerRight, centerTop, centerBottom;
     /**
@@ -107,7 +107,7 @@ public class FilterMenuLayout extends ViewGroup {
      * the center drawable
      * TODO: add more drawable
      */
-    private FilterMenuDrawable drawable;
+    private FilterMenuDrawable drawable;        // 自定义的drawable
     private ObjectAnimator circleAnimator;
     private ValueAnimator colorAnimator;
     private FilterMenu menu;
@@ -209,6 +209,7 @@ public class FilterMenuLayout extends ViewGroup {
         setSoundEffectsEnabled(true);   // 开启点击声音
     }
 
+    //************************************** 工具方法 *************************************/
     /**
      * calculate arc angle between point a and point b
      * 计算2点之间的扇形角度
@@ -232,7 +233,7 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * find the middle point of two intersect points in circle,only one point will be correct
-     *
+     * 2个交叉点的中心点，仅有一个点会被显示
      * @param center
      * @param a
      * @param b
@@ -282,7 +283,7 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * judge if an point in the area or not
-     *
+     * 判断1个点是否落在指点的区域内
      * @param point
      * @param area
      * @param offsetRatio
@@ -296,7 +297,7 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * calculate the  point a's angle of rectangle consist of point a,point b, point c;
-     *
+     * 计算出3点之间的角度
      * @param vertex
      * @param A
      * @param B
@@ -313,7 +314,7 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * calculate distance of two points
-     *
+     * 计算出两点之间的距离
      * @param a
      * @param b
      * @return
@@ -325,7 +326,11 @@ public class FilterMenuLayout extends ViewGroup {
     }
 
 
+    //************************************** 流程方法 *************************************/
 
+    /**
+     * 完成布局填充之后，调用该方法
+     */
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -349,11 +354,19 @@ public class FilterMenuLayout extends ViewGroup {
         invalidate();
     }
 
+    /**
+     * 触发配置事件时，如改变屏幕方向、弹出软件盘和隐藏软键盘等，不走oncreate，直接调用该方法
+     * @param newConfig
+     */
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
 
+    /**
+     * 带动画的收缩
+     * @param animate
+     */
     void collapse(boolean animate) {
         state = STATE_COLLAPSE;
         for (int i = 0; i < getChildCount(); i++) {
@@ -368,6 +381,10 @@ public class FilterMenuLayout extends ViewGroup {
         }
     }
 
+    /**
+     * 带动画的展开
+     * @param animate
+     */
     void expand(boolean animate) {
         state = STATE_EXPAND;
         for (int i = 0; i < getChildCount(); i++) {
@@ -384,6 +401,10 @@ public class FilterMenuLayout extends ViewGroup {
         }
     }
 
+    /**
+     * 带动画地触发
+     * @param animate
+     */
     void toggle(boolean animate) {
         if (state == STATE_COLLAPSE) {
             expand(animate);
@@ -404,10 +425,15 @@ public class FilterMenuLayout extends ViewGroup {
 
 
         setMeasuredDimension(width, height);
-        measureChildren(widthMeasureSpec, heightMeasureSpec);
+        measureChildren(widthMeasureSpec, heightMeasureSpec);   // 测量所有子控件的宽高
 
     }
 
+    /**
+     * 为了根据不同的state来进行切换以及刷新UI,必须重写该方法
+     * @param who 需要核实的drawable
+     * @return
+     */
     @Override
     protected boolean verifyDrawable(Drawable who) {
         return who == drawable || super.verifyDrawable(who);
@@ -515,12 +541,19 @@ public class FilterMenuLayout extends ViewGroup {
         return super.onInterceptTouchEvent(ev);
     }
 
+    /**
+     * 当view的大小发生变化时触发
+     * @param w
+     * @param h
+     * @param oldw
+     * @param oldh
+     */
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         Log.d(TAG, "onSizeChanged: " + w + ", " + h);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setOutlineProvider(outlineProvider);
+            setOutlineProvider(outlineProvider);    // 设置阴影的轮廓
         }
         int x, y;
         if (centerHorizontal) {
@@ -554,13 +587,15 @@ public class FilterMenuLayout extends ViewGroup {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (expandProgress > 0f) {
+        if (expandProgress > 0f) {      // 展开过程中的浅色圆
             canvas.drawCircle(center.x, center.y, collapsedRadius + (expandedRadius - collapsedRadius) * expandProgress, primaryPaint);
         }
+        // 中心的暗色圆
         canvas.drawCircle(center.x, center.y, collapsedRadius + (collapsedRadius * .2f * expandProgress), primaryDarkPaint);
         drawable.draw(canvas);
     }
 
+    /* 开启展开的动画 */
     void startExpandAnimation() {
         //animate circle
         circleAnimator.setFloatValues(getExpandProgress(), 1f);
@@ -569,7 +604,7 @@ public class FilterMenuLayout extends ViewGroup {
         //animate color
         colorAnimator.setObjectValues(colorAnimator.getAnimatedValue() == null ? primaryColor : colorAnimator.getAnimatedValue(), primaryDarkColor);
         colorAnimator.start();
-        //animate menu item
+        //animate menu item  菜单item的动画
         int delay = DURATION_BETWEEN_ITEM;
         for (int i = 0; i < getChildCount(); i++) {
             getChildAt(i).animate()
@@ -586,6 +621,7 @@ public class FilterMenuLayout extends ViewGroup {
         }
     }
 
+    /* 开启收缩的动画 */
     void startCollapseAnimation() {
         //animate circle
         circleAnimator.setFloatValues(getExpandProgress(), 0f);
@@ -618,6 +654,7 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * calculate and set position to menu items
+     * 计算并设置菜单item的Position
      */
     private void calculateMenuItemPosition() {
 
@@ -645,12 +682,13 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * find all intersect points, and calculate menu items display area;
+     * 找到所有的交叉点，并计算菜单条目显示的区域
      */
     private void calculateIntersectPoints() {
         intersectPoints.clear();
 
         /** order intersect points clockwise **/
-        //left edge
+        //left edge 左边缘
         if (center.x - menuBounds.left < expandedRadius) {
             int dy = (int) Math.sqrt(Math.pow(expandedRadius, 2) - Math.pow(center.x - menuBounds.left, 2));
             if (center.y - dy > menuBounds.top) {
@@ -662,7 +700,7 @@ public class FilterMenuLayout extends ViewGroup {
             }
 
         }
-        //top edge
+        //top edge 顶边缘
         if (center.y - menuBounds.top < expandedRadius) {
             int dx = (int) Math.sqrt(Math.pow(expandedRadius, 2) - Math.pow(center.y - menuBounds.top, 2));
             if (center.x + dx < menuBounds.right) {
@@ -673,7 +711,7 @@ public class FilterMenuLayout extends ViewGroup {
             }
         }
 
-        //right edge
+        //right edge 右边缘
         if (menuBounds.right - center.x < expandedRadius) {
             int dy = (int) Math.sqrt(Math.pow(expandedRadius, 2) - Math.pow(menuBounds.right - center.x, 2));
 
@@ -685,7 +723,7 @@ public class FilterMenuLayout extends ViewGroup {
             }
 
         }
-        //bottom edge
+        //bottom edge 底部边缘
         if (menuBounds.bottom - center.y < expandedRadius) {
             int dx = (int) Math.sqrt(Math.pow(expandedRadius, 2) - Math.pow(menuBounds.bottom - center.y, 2));
             if (center.x + dx < menuBounds.right) {
@@ -697,7 +735,7 @@ public class FilterMenuLayout extends ViewGroup {
         }
 
 
-        //find the maximum arc in menuBounds
+        //find the maximum arc in menuBounds获取菜单界限内，条目数对应的弧度
         int size = intersectPoints.size();
         if (size == 0) {
             fromAngle = 0;
@@ -750,7 +788,7 @@ public class FilterMenuLayout extends ViewGroup {
 
     /**
      * judge a->b is ordered clockwise
-     *
+     * 若a点到b点是不是顺时针的顺序
      * @param center
      * @param a
      * @param b
@@ -761,15 +799,13 @@ public class FilterMenuLayout extends ViewGroup {
         return cross > 0;
     }
 
-    public int getState() {
-        return state;
-    }
-
-    public void setMenu(FilterMenu menu) {
-        this.menu = menu;
-    }
 
 
+    /*
+    * --------------------------------------------
+    *  非正常退出时的save
+    * --------------------------------------------
+    */
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
         SavedState ss = (SavedState) state;
@@ -799,6 +835,18 @@ public class FilterMenuLayout extends ViewGroup {
         return ss;
     }
 
+    /*
+    * --------------------------------------------
+    *  setter & getter
+    * --------------------------------------------
+    */
+    public int getState() {
+        return state;
+    }
+
+    public void setMenu(FilterMenu menu) {
+        this.menu = menu;
+    }
 
     public int getExpandedRadius() {
         return expandedRadius;
@@ -838,6 +886,11 @@ public class FilterMenuLayout extends ViewGroup {
         invalidate();
     }
 
+    /*
+    * --------------------------------------------
+    *  内部类，继承View的静态内部类savestate，记录view需要保存哪些数据
+    * --------------------------------------------
+    */
     static class SavedState extends BaseSavedState {
 
         public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
@@ -888,7 +941,7 @@ public class FilterMenuLayout extends ViewGroup {
     }
 
     /**
-     * 21版本以上的，实现阴影轮廓
+     * 21版本以上的，轮廓辅助类
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public class OvalOutline extends ViewOutlineProvider {
@@ -896,6 +949,11 @@ public class FilterMenuLayout extends ViewGroup {
             super();
         }
 
+        /**
+         * 获取轮廓
+         * @param view
+         * @param outline
+         */
         @Override
         public void getOutline(View view, Outline outline) {
             int radius = (int) (collapsedRadius + (expandedRadius - collapsedRadius) * expandProgress);
