@@ -79,6 +79,18 @@
             android:onClick="filterMenu"
             android:text="圆碟状菜单"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="loading"
+            android:text="加载进度"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goDragView"
+            android:text="可拖拽，可展开的网格"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

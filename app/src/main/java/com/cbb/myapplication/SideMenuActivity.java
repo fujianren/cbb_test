@@ -33,7 +33,7 @@ public class SideMenuActivity extends ActionBarActivity implements ViewAnimator.
     private List<SlideMenuItem> list = new ArrayList<>();
     private ContentFragment contentFragment;
     private ViewAnimator viewAnimator;
-    private int res = R.drawable.content_music;
+    private int res = R.drawable.content_music;     // fragment填充的图片id
     private LinearLayout linearLayout;
 
     @Override

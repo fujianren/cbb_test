@@ -38,5 +38,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.github.ozodrukh:CircularReveal:1.0.4'
+    compile 'com.nineoldandroids:library:2.4.0'
     testCompile 'junit:junit:4.12'
 }

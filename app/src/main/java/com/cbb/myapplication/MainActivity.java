@@ -72,4 +72,12 @@ public class MainActivity extends AppCompatActivity {
     public void filterMenu(View view) {
         start(FilterMenuActivity.class);
     }
+
+    public void loading(View view){
+        start(LoadingActivity.class);
+    }
+
+    public void goDragView(View view){
+        start(DragGridViewActivity.class);
+    }
 }

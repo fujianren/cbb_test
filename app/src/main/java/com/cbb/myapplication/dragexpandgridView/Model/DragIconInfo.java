@@ -1,6 +1,4 @@
-package com.wedcel.dragexpandgrid.model;
-
-import com.wedcel.dragexpandgrid.model.DargChildInfo;
+package com.cbb.myapplication.dragexpandgridView.Model;
 
 import java.util.ArrayList;
 
@@ -33,7 +31,7 @@ public class DragIconInfo {
     /**
      * 展开的child
      */
-    private ArrayList<DargChildInfo> childList = new ArrayList<DargChildInfo>();
+    private ArrayList<DragChildInfo> childList = new ArrayList<DragChildInfo>();
 
 
     public DragIconInfo() {
@@ -42,7 +40,7 @@ public class DragIconInfo {
 
 
     public DragIconInfo(int id, String name, int resIconId, int category,
-                        ArrayList<DargChildInfo> childList) {
+                        ArrayList<DragChildInfo> childList) {
         super();
         this.id = id;
         this.name = name;
@@ -92,12 +90,12 @@ public class DragIconInfo {
     }
 
 
-    public ArrayList<DargChildInfo> getChildList() {
+    public ArrayList<DragChildInfo> getChildList() {
         return childList;
     }
 
 
-    public void setChildList(ArrayList<DargChildInfo> childList) {
+    public void setChildList(ArrayList<DragChildInfo> childList) {
         this.childList = childList;
     }
 
