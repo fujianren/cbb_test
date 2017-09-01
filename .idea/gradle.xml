@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/butterknifelibrary" />
             <option value="$PROJECT_DIR$/elasticdownload" />
             <option value="$PROJECT_DIR$/heartlibrary" />
             <option value="$PROJECT_DIR$/loadtoastlibrary" />

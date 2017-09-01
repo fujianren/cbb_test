@@ -92,5 +92,11 @@
             android:text="可拖拽，可展开的网格"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="disPlayButterknife"
+            android:text="butterknife的展示"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

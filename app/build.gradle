@@ -40,4 +40,5 @@ dependencies {
     compile 'com.github.ozodrukh:CircularReveal:1.0.4'
     compile 'com.nineoldandroids:library:2.4.0'
     testCompile 'junit:junit:4.12'
+    compile project(path: ':butterknifelibrary')
 }

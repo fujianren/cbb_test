@@ -55,6 +55,7 @@
         </activity>
         <activity android:name=".DragGridViewActivity">
         </activity>
+        <activity android:name=".user.SimpleActivity"/>
     </application>
 
 </manifest>
