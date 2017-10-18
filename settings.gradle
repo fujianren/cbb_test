@@ -1,1 +1,1 @@
-include ':app', ':elasticdownload', ':heartlibrary', ':sinaturelibrary', ':loadtoastlibrary', ':writetextlibrary', ':sidemenu', ':butterknifelibrary'
+include ':app', ':elasticdownload', ':heartlibrary', ':sinaturelibrary', ':loadtoastlibrary', ':writetextlibrary', ':sidemenu', ':butterknifelibrary', ':shapeloading'

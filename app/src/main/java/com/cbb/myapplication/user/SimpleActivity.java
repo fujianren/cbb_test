@@ -33,8 +33,8 @@ public class SimpleActivity extends Activity {
 
   @Bind(R.id.title) TextView title;
   @Bind(R.id.subtitle) TextView subtitle;
-  @Bind(R.id.hello) Button hello;
-  @Bind(R.id.list_of_things) ListView listOfThings;
+
+  @Bind(R.id.list_of_things) ListView listOfThings;@Bind(R.id.hello) Button hello;
   @Bind(R.id.footer) TextView footer;
 
   @Bind({ R.id.title, R.id.subtitle, R.id.hello })

@@ -21,8 +21,10 @@ import static com.cbb.butterknifelibrary.internal.InternalKeys.JAVA_PREFIX;
 /**
  * Field and method binding for Android views. Use this class to simplify finding views and
  * attaching listeners by binding them with annotations.
+ * 使用本类，简单实现找控件，挂载监听
  * <p>
  * Finding views from your activity is as easy as:
+ * 简单使用如下：
  * <pre><code>
  * public class ExampleActivity extends Activity {
  *   {@literal @}Bind(R.id.title) EditText titleView;
@@ -80,14 +82,16 @@ import static com.cbb.butterknifelibrary.internal.InternalKeys.JAVA_PREFIX;
  * </code></pre>
  */
 public final class ButterKnife {
+  // final的类，唯一不能被实例
   private ButterKnife() {
     throw new AssertionError("No instances.");
   }
 
   /** DO NOT USE: Exposed for generated code. */
   @SuppressWarnings("UnusedDeclaration") // Used by generated code.
-  public enum Finder {
+  public enum Finder {    // 4种枚举对象
     VIEW {
+      // 重写findView方法，由谷歌源码找findViewById实现核心代码
       @Override protected View findView(Object source, int id) {
         return ((View) source).findViewById(id);
       }
@@ -99,6 +103,7 @@ public final class ButterKnife {
       @Override protected String getResourceEntryName(Object source, int id) {
         final View view = (View) source;
         // In edit mode, getResourceEntryName() is unsupported due to use of BridgeResources
+        // 在编辑模式下，由于桥资源的使用使得getResourceEntryName()方法无效
         if (view.isInEditMode()) {
           return "<unavailable while editing>";
         }
@@ -124,6 +129,7 @@ public final class ButterKnife {
       }
     };
 
+    /* 将数组中为空的元素剔除 */
     private static <T> T[] filterNull(T[] views) {
       int end = 0;
       for (int i = 0; i < views.length; i++) {
@@ -134,16 +140,26 @@ public final class ButterKnife {
       }
       return Arrays.copyOfRange(views, 0, end);
     }
-
+    /* 剔除数组中的空元素 */
     public static <T> T[] arrayOf(T... views) {
       return filterNull(views);
     }
 
+    /* 封装成一个不可变的单列集合 */
     public static <T> List<T> listOf(T... views) {
       return new ImmutableList<>(filterNull(views));
     }
 
+    /**
+     * 核心方法，被viewBinder类调用，获取指定类型的view（其中的会触发最终的findbyid，具体实现由枚举来继承并完成）
+     * @param source  根容器
+     * @param id    view对应的id
+     * @param who   异常的文本
+     * @param <T>   需要转化成的类型
+     * @return
+     */
     public <T> T findRequiredView(Object source, int id, String who) {
+      // 将根容器下指定id的view强转成指定类型的view
       T view = findOptionalView(source, id, who);
       if (view == null) {
         String name = getResourceEntryName(source, id);
@@ -158,20 +174,23 @@ public final class ButterKnife {
       return view;
     }
 
+    /* 找到根容器下任意的view，并返回强转后的view */
     public <T> T findOptionalView(Object source, int id, String who) {
       View view = findView(source, id);
       return castView(view, id, who);
     }
 
+    /* 强制转化view的类型 */
     @SuppressWarnings("unchecked") // That's the point.
     public <T> T castView(View view, int id, String who) {
       try {
-        return (T) view;
+        return (T) view;  // 直接强转
       } catch (ClassCastException e) {
+        // 类型转化异常，抛出打印
         if (who == null) {
           throw new AssertionError();
         }
-        String name = getResourceEntryName(view, id);
+        String name = getResourceEntryName(view, id); // 获取id对应的名称
         throw new IllegalStateException("View '"
             + name
             + "' with ID "
@@ -199,6 +218,12 @@ public final class ButterKnife {
       }
     }
 
+    /**
+     * 获取指定资源中指定id对应的名称
+     * @param source  指定的资源
+     * @param id      指定的id
+     * @return        id的名称
+     */
     protected String getResourceEntryName(Object source, int id) {
       return getContext(source).getResources().getResourceEntryName(id);
     }
@@ -229,6 +254,7 @@ public final class ButterKnife {
   private static final String TAG = "ButterKnife";
   private static boolean debug = false;
 
+  /* 出门自带map，viewBinder */
   static final Map<Class<?>, ViewBinder<Object>> BINDERS = new LinkedHashMap<>();
   static final ViewBinder<Object> NOP_VIEW_BINDER = new ViewBinder<Object>() {
     @Override public void bind(Finder finder, Object target, Object source) { }
@@ -243,8 +269,8 @@ public final class ButterKnife {
   /**
    * Bind annotated fields and methods in the specified {@link Activity}. The current content
    * view is used as the view root.
-   *
-   * @param target Target activity for view binding.
+   * 在指定的activity中Bind被声明@的域变量和域方法，当前的内容控件将作为bind的根控件
+   * @param target Target activity for view binding.  要bind的activity
    */
   public static void bind(Activity target) {
     bind(target, target, Finder.ACTIVITY);
@@ -253,7 +279,7 @@ public final class ButterKnife {
   /**
    * Bind annotated fields and methods in the specified {@link View}. The view and its children
    * are used as the view root.
-   *
+   * 在指定的View中,Bind被声明@的域变量和域方法
    * @param target Target view for view binding.
    */
   public static void bind(View target) {
@@ -323,12 +349,19 @@ public final class ButterKnife {
     }
   }
 
+  /**
+   * 内部利用viewbinder接口回调bind方法来实现
+   * @param target  被@的对象，即我们要bind的对象，一般写this
+   * @param source  要bind的对象所在的根布局容器，一般是root
+   * @param finder  过滤器，过滤标签是3个枚举activity，view，dialog
+   */
   static void bind(Object target, Object source, Finder finder) {
     Class<?> targetClass = target.getClass();
     try {
       if (debug) Log.d(TAG, "Looking up view binder for " + targetClass.getName());
       ViewBinder<Object> viewBinder = findViewBinderForClass(targetClass);
       if (viewBinder != null) {
+        // 调用目标对象的viewBinder的bind（）方法，实现最终
         viewBinder.bind(finder, target, source);
       }
     } catch (Exception e) {
@@ -336,19 +369,23 @@ public final class ButterKnife {
     }
   }
 
+  /* 通过要bind对象的反射类，获取对应的viewBiner */
   private static ViewBinder<Object> findViewBinderForClass(Class<?> cls)
       throws IllegalAccessException, InstantiationException {
-    ViewBinder<Object> viewBinder = BINDERS.get(cls);
+    ViewBinder<Object> viewBinder = BINDERS.get(cls);   // 获取map中，class对应的viewBInder接口
     if (viewBinder != null) {
       if (debug) Log.d(TAG, "HIT: Cached in view binder map.");
       return viewBinder;
     }
-    String clsName = cls.getName();
+    // 若原map中没有对应的viewBinder
+    String clsName = cls.getName();  // 获取类名
     if (clsName.startsWith(ANDROID_PREFIX) || clsName.startsWith(JAVA_PREFIX)) {
+      // android.或java.包下，直接返回默认的viewBinder
       if (debug) Log.d(TAG, "MISS: Reached framework class. Abandoning search.");
       return NOP_VIEW_BINDER;
     }
     try {
+      // 加载XXXX$$ViewBinder类，并实例化该类，强转成viewBInder
       Class<?> viewBindingClass = Class.forName(clsName + BINDING_CLASS_SUFFIX);
       //noinspection unchecked
       viewBinder = (ViewBinder<Object>) viewBindingClass.newInstance();
@@ -357,6 +394,7 @@ public final class ButterKnife {
       if (debug) Log.d(TAG, "Not found. Trying superclass " + cls.getSuperclass().getName());
       viewBinder = findViewBinderForClass(cls.getSuperclass());
     }
+    // 在map中添加进该viewBinder
     BINDERS.put(cls, viewBinder);
     return viewBinder;
   }

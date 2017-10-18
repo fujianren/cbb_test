@@ -107,4 +107,16 @@ public class MainActivity extends AppCompatActivity {
     public void disPlayButterknife(View view){
         start(SimpleActivity.class);
     }
+
+    public void goDialogDemo(View view){
+        start(DialogDemoActivity.class);
+    }
+
+    public void goViewDemo(View view){
+        start(ViewDemoActivity.class);
+    }
+
+    public void goMapDemo(View view){
+        start(BDActivity.class);
+    }
 }

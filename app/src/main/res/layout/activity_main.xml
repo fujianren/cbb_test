@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="elasticDownload"
-            android:text="elastic进度条"/>
+            android:text="elastic进度条，有毒"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -95,7 +95,26 @@
 
         <Button
             android:onClick="disPlayButterknife"
-            android:text="butterknife的展示"
+            android:text="butterknife的展示，有毒"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:onClick="goDialogDemo"
+            android:text="dialog加载仿58"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goViewDemo"
+            android:text="view加载仿58"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goMapDemo"
+            android:text="百度地图呆萌"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
