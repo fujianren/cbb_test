@@ -23,4 +23,5 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.cbb.myapplication", appContext.getPackageName());
     }
+
 }
