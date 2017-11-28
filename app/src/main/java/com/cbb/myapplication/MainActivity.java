@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.cbb.myapplication.QrCodeScan.CaptureActivity;
+import com.cbb.myapplication.permission.PermissionsStartActivity;
 import com.cbb.myapplication.share.ShareActivity;
+import com.cbb.myapplication.taiji.EasyCircleActivity;
+import com.cbb.myapplication.taiji.TaijiActivity;
 import com.cbb.myapplication.user.SimpleActivity;
 
 import java.io.UnsupportedEncodingException;
@@ -118,5 +121,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void goMapDemo(View view){
         start(BDActivity.class);
+    }
+
+    public void goTaijiDemo(View view){
+        start(TaijiActivity.class);
+    }
+
+    public void goCircleDemo(View view){
+        start(EasyCircleActivity.class);
+    }
+
+    public void goRecyclerViewDemo(View view) {
+        start(EasyRecyclerViewActivity.class);
+    }
+
+    public void goPermissionDemo(View view) {
+        start(PermissionsStartActivity.class);
     }
 }

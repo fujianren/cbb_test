@@ -10,17 +10,20 @@
 
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <!-- 测试的音量权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
 
-<!--百度地图权限-->
+    <!-- 百度地图权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <application
         android:allowBackup="true"
@@ -31,7 +34,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="o9U5NBUPzUGuouHBjW0YGYnfR4WeIFOk" />
+            android:value="o9U5NBUPzUGuouHBjW0YGYnfR4WeIFOk"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -74,6 +77,16 @@
         <activity android:name=".DialogDemoActivity"/>
         <activity android:name=".ViewDemoActivity"/>
         <activity android:name=".BDActivity">
+        </activity>
+        <activity android:name=".taiji.TaijiActivity">
+        </activity>
+        <activity android:name=".taiji.EasyCircleActivity">
+        </activity>
+        <activity android:name=".EasyRecyclerViewActivity">
+        </activity>
+        <activity android:name=".permission.PermissionsStartActivity">
+        </activity>
+        <activity android:name=".permission.PermissionsActivity">
         </activity>
     </application>
 

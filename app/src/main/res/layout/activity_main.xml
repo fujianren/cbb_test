@@ -117,5 +117,29 @@
             android:text="百度地图呆萌"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goTaijiDemo"
+            android:text="旋转太极呆萌"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goCircleDemo"
+            android:text="练手的百分比圆呆萌"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goRecyclerViewDemo"
+            android:text="RecyclerView呆萌"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goPermissionDemo"
+            android:text="动态权限小呆萌"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

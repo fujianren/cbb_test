@@ -17,7 +17,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk { //选择要添加的对应cpu类型的.so库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64', 'mips', 'mips64'}
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
 
     }
     buildTypes {
@@ -41,12 +42,13 @@ dependencies {
     compile project(path: ':sidemenu')
     compile project(path: ':butterknifelibrary')
     compile project(path: ':shapeloading')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.github.ozodrukh:CircularReveal:1.0.4'
     compile 'com.nineoldandroids:library:2.4.0'
     testCompile 'junit:junit:4.12'
-    compile files('libs/BaiduLBS_Android.jar')
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
