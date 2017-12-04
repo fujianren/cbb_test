@@ -11,4 +11,9 @@
     <item type="id" name="tag_first"/>
     <item type="id" name="tag_second"/>
     <item type="id" name="tvScan"/>
+
+    <!-- 圆环菜单 -->
+    <item name="id_circle_menu_item_image" type="id"/>
+    <item name="id_circle_menu_item_text" type="id"/>
+    <item name="id_circle_menu_item_center" type="id"/>
 </resources>

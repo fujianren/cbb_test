@@ -141,5 +141,23 @@
             android:text="动态权限小呆萌"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <Button
+            android:onClick="goCobwebsDemo"
+            android:text="蜘蛛网小呆萌"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goQQListDemo"
+            android:text="仿QQ列表滑动删除"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:onClick="goCircleMenuDemo"
+            android:text="圆环滚动菜单小呆萌"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

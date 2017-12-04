@@ -6,4 +6,8 @@
         <item name="android:listDivider">@drawable/divider_bg</item>
     </style>
 
+    <style name="popwindow_delete_btn_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+    </style>
+
 </resources>

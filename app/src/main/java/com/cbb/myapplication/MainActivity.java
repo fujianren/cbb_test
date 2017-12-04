@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.cbb.myapplication.QQ_listview.QQListActivity;
 import com.cbb.myapplication.QrCodeScan.CaptureActivity;
+import com.cbb.myapplication.circle_menu.CircleMenuActivity;
+import com.cbb.myapplication.cobwebs.CobwebsActivity;
 import com.cbb.myapplication.permission.PermissionsStartActivity;
 import com.cbb.myapplication.share.ShareActivity;
 import com.cbb.myapplication.taiji.EasyCircleActivity;
@@ -38,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d(TAG, "onCreate: " + s1);
-
-
     }
 
     public void elasticDownload(View view){
@@ -137,5 +138,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void goPermissionDemo(View view) {
         start(PermissionsStartActivity.class);
+    }
+
+    public void goCobwebsDemo(View view) {
+        start(CobwebsActivity.class);
+    }
+
+    public void goQQListDemo(View view) {
+        start(QQListActivity.class);
+    }
+
+    public void goCircleMenuDemo(View view) {
+        start(CircleMenuActivity.class);
     }
 }

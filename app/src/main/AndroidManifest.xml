@@ -88,6 +88,12 @@
         </activity>
         <activity android:name=".permission.PermissionsActivity">
         </activity>
+        <activity android:name=".cobwebs.CobwebsActivity">
+        </activity>
+        <activity android:name=".QQ_listview.QQListActivity">
+        </activity>
+        <activity android:name=".circle_menu.CircleMenuActivity">
+        </activity>
     </application>
 
 </manifest>
