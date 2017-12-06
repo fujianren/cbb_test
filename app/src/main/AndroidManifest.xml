@@ -94,6 +94,8 @@
         </activity>
         <activity android:name=".circle_menu.CircleMenuActivity">
         </activity>
+        <activity android:name=".large_image.LargeImageActivity">
+        </activity>
     </application>
 
 </manifest>

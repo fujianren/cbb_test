@@ -10,6 +10,7 @@ import com.cbb.myapplication.QQ_listview.QQListActivity;
 import com.cbb.myapplication.QrCodeScan.CaptureActivity;
 import com.cbb.myapplication.circle_menu.CircleMenuActivity;
 import com.cbb.myapplication.cobwebs.CobwebsActivity;
+import com.cbb.myapplication.large_image.LargeImageActivity;
 import com.cbb.myapplication.permission.PermissionsStartActivity;
 import com.cbb.myapplication.share.ShareActivity;
 import com.cbb.myapplication.taiji.EasyCircleActivity;
@@ -39,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
 
         }
-
-        Log.d(TAG, "onCreate: " + s1);
     }
+
+
+
 
     public void elasticDownload(View view){
         Intent intent = new Intent(this, ElasticActivity.class);
@@ -150,5 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void goCircleMenuDemo(View view) {
         start(CircleMenuActivity.class);
+    }
+
+    public void goLargeImageDemo(View view) {
+        start(LargeImageActivity.class);
     }
 }
