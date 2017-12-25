@@ -96,6 +96,10 @@
         </activity>
         <activity android:name=".large_image.LargeImageActivity">
         </activity>
+        <activity android:name=".water_wave.WaterWaveActivity">
+        </activity>
+        <activity android:name=".viewpager.ViewPagerActivity">
+        </activity>
     </application>
 
 </manifest>

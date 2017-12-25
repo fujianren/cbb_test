@@ -28,6 +28,12 @@
             android:text="完成"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:gravity="center"
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
     </LinearLayout>
 
     <TextView
@@ -39,4 +45,5 @@
         android:text="签名区域"
         android:textColor="#c7c7cc"
         android:textSize="20sp" />
+
 </FrameLayout>

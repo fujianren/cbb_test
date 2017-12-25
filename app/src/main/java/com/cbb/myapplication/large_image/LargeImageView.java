@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -26,7 +27,7 @@ public class LargeImageView extends View {
     private BitmapRegionDecoder mRegionDecoder;
     /* 图片的宽度，高度 */
     private int mImageWidth, mImageHeight;
-    /* 绘制的区域,每次使用都要重新读取 */
+    /* 绘制的区域,每次使用都要读取 */
     private volatile Rect mRect = new Rect();
 
     /* 配合静态代码块使用的静态变量，bitmap的选项配置 */
@@ -60,7 +61,7 @@ public class LargeImageView extends View {
         int imageWidth = mImageWidth;
         int imageHeight = mImageHeight;
 
-        // 默认直接显示图片的中心区域，可以自行调节
+        // 默认直接显示图片的中心区域，可以自行调节,初始化
         mRect.left = imageWidth / 2 - width / 2;
         mRect.top = imageHeight / 2 - height / 2;
         mRect.right = mRect.left + width;
@@ -86,37 +87,38 @@ public class LargeImageView extends View {
                 int moveX = (int) detector.getMoveX();
                 int moveY = (int) detector.getMoveY();
                 if (mImageWidth > getWidth()) {
-                    mRect.offset(-moveX, 0);       // 设置区域的偏移量与手势同步
-                    checkWidth();
-                    invalidate();
+                    mRect.offset(-moveX, 0);       // 设置区域的偏移量与手势同步，让截取的rect一直在变化
+//                    checkWidth();
                 }
                 if (mImageHeight > getHeight()) {
                     mRect.offset(0, -moveY);
                     checkHeight();
-                    invalidate();
                 }
+                invalidate();
                 return true;
             }
         });
     }
 
+    /* 检查区域高度，确定区域上下边不会截到image外 */
     private void checkHeight() {
-        Rect rect = mRect;
+        Rect rect = mRect;      // 真是奇奇怪怪，难道是指向同一个对象内存
         int imageWidth = mImageWidth;
         int imageHeight = mImageHeight;
-        if (rect.bottom > imageHeight) {
-            rect.bottom = imageHeight;
-            rect.top = imageHeight - getHeight();
+        if (mRect.bottom > imageHeight) {
+            mRect.bottom = imageHeight;
+            mRect.top = imageHeight - getHeight();
         }
 
-        if (rect.top < 0) {
-            rect.top = 0;
-            rect.bottom = getHeight();
+        if (mRect.top < 0) {
+            mRect.top = 0;
+            mRect.bottom = getHeight();
         }
     }
 
     private void checkWidth() {
         Rect rect = mRect;
+        Log.d(TAG, "onMove: " + mRect.left + "==" + mRect.right);
         int imageWidth = mImageWidth;
         int imageHeight = mImageHeight;
         if (rect.right > imageWidth){
@@ -127,6 +129,7 @@ public class LargeImageView extends View {
             rect.left = 0;
             rect.right = getWidth();
         }
+        Log.d(TAG, "onMove: " + mRect.left + "==" + mRect.right);
     }
 
 

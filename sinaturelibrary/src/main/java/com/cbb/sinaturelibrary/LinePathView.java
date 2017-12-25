@@ -21,7 +21,9 @@ import java.io.IOException;
 /**
  * @author chenbb
  * @create 2017/7/17
- * @desc
+ * @desc    利用一个临时canvas封装bitmap，
+ * 将path绘制在临时的canvas上，此时bitmap上也记录了每次path的显示
+ * 最后把这个bitmap绘制出来
  */
 
 public class LinePathView extends View {
@@ -45,8 +47,8 @@ public class LinePathView extends View {
     private int mbgColor;
 
     TextView mTextView;
-    private Bitmap mCacheBitmap;
-    private Canvas mCacheCanves;
+    private Bitmap mCacheBitmap;        // 临时的bitmap，和view等大，记录着每次绘制的内容
+    private Canvas mCacheCanves;        // 封装bitmap的临时画布，将以往的path绘制其上
     private float mDownX;
     private float mDownY;
 
@@ -90,8 +92,8 @@ public class LinePathView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawBitmap(mCacheBitmap, 0, 0, mGesturePaint);
-        canvas.drawPath(mPath, mGesturePaint);
+        canvas.drawBitmap(mCacheBitmap, 0, 0, mGesturePaint);   // 把临时画布上的内容绘制出来
+        canvas.drawPath(mPath, mGesturePaint);                  // 把本次的轨迹绘制出来
     }
 
     @Override
@@ -104,11 +106,11 @@ public class LinePathView extends View {
                 touchMove(event);
                 break;
             case MotionEvent.ACTION_UP:
-                mCacheCanves.drawPath(mPath, mGesturePaint);
+                mCacheCanves.drawPath(mPath, mGesturePaint);   // 停笔，把本次的轨迹绘制到临时画布上
                 mPath.reset();
                 break;
         }
-        invalidate();   // 重绘
+        invalidate();   // 每次触摸都要ondraw，而移动中的path是叠加的，所以看起来像轨迹写字
         return true;    //消费触摸事件
     }
 
@@ -307,6 +309,7 @@ public class LinePathView extends View {
     public void setMbgColor(@ColorInt int mbgColor) {
         this.mbgColor = mbgColor;
     }
+
     /*获取画板的bitmap*/
     public Bitmap getBitmap() {
         setDrawingCacheEnabled(true);
@@ -360,5 +363,7 @@ public class LinePathView extends View {
     }
 
 
-
+    public Bitmap getCacheBitmap() {
+        return mCacheBitmap;
+    }
 }

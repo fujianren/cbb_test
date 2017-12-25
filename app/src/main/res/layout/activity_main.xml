@@ -165,5 +165,17 @@
             android:text="大图拖动浏览小呆萌"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goWaterWaveDemo"
+            android:text="没啥卵用的轨迹涟漪"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goViewPagerDemo"
+            android:text="横向轮播广告"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

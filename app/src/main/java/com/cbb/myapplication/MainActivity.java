@@ -16,6 +16,8 @@ import com.cbb.myapplication.share.ShareActivity;
 import com.cbb.myapplication.taiji.EasyCircleActivity;
 import com.cbb.myapplication.taiji.TaijiActivity;
 import com.cbb.myapplication.user.SimpleActivity;
+import com.cbb.myapplication.viewpager.ViewPagerActivity;
+import com.cbb.myapplication.water_wave.WaterWaveActivity;
 
 import java.io.UnsupportedEncodingException;
 
@@ -156,5 +158,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void goLargeImageDemo(View view) {
         start(LargeImageActivity.class);
+    }
+
+    public void goWaterWaveDemo(View view) {
+        start(WaterWaveActivity.class);
+    }
+
+    public void goViewPagerDemo(View view) {
+        start(ViewPagerActivity.class);
     }
 }
