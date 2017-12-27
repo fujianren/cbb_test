@@ -177,5 +177,11 @@
             android:text="横向轮播广告"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="goHexagonalLoadingDemo"
+            android:text="一闪一闪六边形加载大法"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

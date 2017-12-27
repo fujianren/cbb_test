@@ -4,8 +4,12 @@ package com.cbb.myapplication.kotlin_demo
  * @author   chenbb
  * @create   2017/10/18
  * @desc
+ * 1.变量要么申明类型，要么被初始化
+ * 2.try...catch不提示
+ * 3
  */
 class HelloWorld {
+
 
     fun main(args: Array<String>) {
         Greeter(args[0]).greet()          // 创建一个对象不用 new 关键字
@@ -14,6 +18,9 @@ class HelloWorld {
         // 匿名函数
         val sumLambda: (Int, Int) -> Int = { x, y -> x + y }
         println(sumLambda(1, 2));
+
+        val arr = "aa.dd.bb.cc"
+        arr.split(".")
 
     }
 
