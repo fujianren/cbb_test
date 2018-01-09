@@ -16,9 +16,13 @@ import com.cbb.myapplication.R;
 
 
 /**
- * @author chenbb
+ * @author chenbb注解
  * @create 2017/12/1
- * @desc    圆环菜单
+ * @desc   圆环菜单
+ * 思路:
+ * 1.整view分成中心图标和围绕的子菜单，固定子控件id，暴露设置子控件样式的接口
+ * 2.一个动态的起点{@link #startAngle}，确定的子菜单个数，重写onMeasure，onLayout
+ * 3.触摸监听，判断手势，变化startAngle值，并requestLayout()，达到一个动画随手指进行的效果
  */
 
 public class CircleMenuLayout extends ViewGroup{
@@ -119,7 +123,14 @@ public class CircleMenuLayout extends ViewGroup{
     }
 
 
-
+    /**
+     * 核心方法，会被requestLayout（）多次调用
+     * @param changed
+     * @param l
+     * @param t
+     * @param r
+     * @param b
+     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int layoutRadius = mRadius;

@@ -36,7 +36,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="o9U5NBUPzUGuouHBjW0YGYnfR4WeIFOk"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.cbb.myapplication.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

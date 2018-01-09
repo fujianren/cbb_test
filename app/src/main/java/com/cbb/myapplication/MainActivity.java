@@ -11,7 +11,7 @@ import com.cbb.myapplication.QrCodeScan.CaptureActivity;
 import com.cbb.myapplication.circle_menu.CircleMenuActivity;
 import com.cbb.myapplication.cobwebs.CobwebsActivity;
 import com.cbb.myapplication.large_image.LargeImageActivity;
-import com.cbb.myapplication.loading_view.HexagonalLoadingDemoActivity;
+
 import com.cbb.myapplication.permission.PermissionsStartActivity;
 import com.cbb.myapplication.share.ShareActivity;
 import com.cbb.myapplication.taiji.EasyCircleActivity;
@@ -170,6 +170,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goHexagonalLoadingDemo(View view) {
-        start(HexagonalLoadingDemoActivity.class);
+//        start(HexagonalLoadingDemoActivity.class);
     }
 }
